@@ -30,7 +30,7 @@ export const cartSlice = createSlice({
       const {payload: product} = action;
       const existingItem = items.find(i => i.product.id === product.id);
       if (existingItem) {
-        existingItem.count++;
+        existingItem.count = product.count > existingItem.count ?  existingItem.count + 1 : existingItem.count;
         return;
       }
       items.push({product, count: 1});
